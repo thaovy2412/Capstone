@@ -108,14 +108,12 @@ workflows:
     jobs:
 
       - hello-job
+
       - lint:
           requires:
             - "hello-job"
 
-
-
       - build:
-          cluster-name: vy-truong-thao-fpt-numberOne-capstone-cluster
           aws-region: $AWS_DEFAULT_REGION
           filters:
             branches:
