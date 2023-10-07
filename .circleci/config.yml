@@ -139,7 +139,7 @@ jobs:
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           resource-file-path: ./k8s/deployment.yml
-          resource-name: deployment/ml-classification
+          resource-name: deployment/vy-truong-thao-fpt-number-one-capstone
           get-rollout-status: true
           show-kubectl-command: true
       - run:
