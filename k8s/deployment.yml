@@ -29,11 +29,11 @@ spec:
             - containerPort: 80
           resources:
             requests:
-              memory: "200Mi"
-              cpu: "1000m"
+              memory: "128Mi"
+              cpu: "500m"
             limits:
-              memory: "200Mi"
-              cpu: "1000m"
+              memory: "128Mi"
+              cpu: "500m"
 
 ---
 apiVersion: v1
