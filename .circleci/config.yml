@@ -3,12 +3,16 @@ orbs:
   aws-eks: circleci/aws-eks@2.1
   kubernetes: circleci/kubernetes@1.2.0
 jobs:
+
+
   hello-job:
     docker:
       - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
+
+
   lint:
     docker:
       - image: python:3.8.0
@@ -38,6 +42,8 @@ jobs:
           command: |
             . venv/bin/activate
             make lint
+
+            
 workflows:
   my-workflow:
     jobs:
