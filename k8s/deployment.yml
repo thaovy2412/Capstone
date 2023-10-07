@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vy-truong-thao-fpt-number-one-capstone
+  labels:
+    app: vy-truong-thao-fpt-number-one-capstone
+  namespace: default
+spec:
+  progressDeadlineSeconds: 3600
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vy-truong-thao-fpt-number-one-capstone
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: vy-truong-thao-fpt-number-one-capstone
+    spec:
+      containers:
+        - image: ttv2412/vy-truong-thao-fpt-number-one-capstone:latest
+          imagePullPolicy: Always
+          name: vy-truong-thao-fpt-number-one-capstone
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "200Mi"
+              cpu: "1000m"
+            limits:
+              memory: "200Mi"
+              cpu: "1000m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vy-truong-thao-fpt-number-one-capstone
+  labels:
+    app: vy-truong-thao-fpt-number-one-capstone
+spec:
+  type: LoadBalancer
+  selector:
+    app: vy-truong-thao-fpt-number-one-capstone
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 3000
+      protocol: TCP
