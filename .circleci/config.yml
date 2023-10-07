@@ -69,11 +69,11 @@ jobs:
             sudo apt install -y tar gzip curl
       - kubernetes/install-kubectl
 # 
-      - run:
-          name: Build docker container
-          command: |
-            docker build --tag=$DOCKER_IMAGE_NAME .
-            docker image ls
+      # - run:
+      #     name: Build docker container
+      #     command: |
+      #       docker build --tag=$DOCKER_IMAGE_NAME .
+      #       docker image ls
 
       - run:
           name: Login and Push to Docker Hub 
