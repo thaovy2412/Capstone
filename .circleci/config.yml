@@ -173,11 +173,11 @@ workflows:
           requires:
             - "lint"            
 
-      # - aws-eks/create-cluster:
-      #     cluster-name: vy-truong-thao-fpt-number-one-capstone-cluster
-      #     requires:
-      #       - "lint"
-      #       - "build"
+      - aws-eks/create-cluster:
+          cluster-name: vy-truong-thao-fpt-number-one-capstone-cluster
+          requires:
+            - "lint"
+            - "build"
 
       - deploy:
           cluster-name: vy-truong-thao-fpt-number-one-capstone-cluster
@@ -189,4 +189,4 @@ workflows:
           requires:
             - "lint"            
             - "build"
-            # - "aws-eks/create-cluster"
+            - "aws-eks/create-cluster"
