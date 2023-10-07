@@ -48,11 +48,11 @@ jobs:
     docker:
       - image: cimg/python:3.11.4
     parameters:
-      cluster-name:
-        description: |
-          Name of the EKS cluster
-        type: string
-        default: "vy-truong-thao-fpt-numberOne-capstone-cluster"
+      # cluster-name:
+      #   description: |
+      #     Name of the EKS cluster
+      #   type: string
+      #   default: "vy-truong-thao-fpt-numberOne-capstone-cluster"
       aws-region:
         description: |
           AWS region
@@ -112,10 +112,7 @@ workflows:
           requires:
             - "hello-job"
 
-      - aws-eks/create-cluster:
-          cluster-name: vy-truong-thao-fpt-numberOne-capstone-cluster
-          requires:
-            - "lint"
+
 
       - build:
           cluster-name: vy-truong-thao-fpt-numberOne-capstone-cluster
@@ -125,4 +122,10 @@ workflows:
               only:
                 - main
           requires:
-            - "aws-eks/create-cluster"            
+            - "lint"            
+
+      - aws-eks/create-cluster:
+          cluster-name: vy-truong-thao-fpt-numberOne-capstone-cluster
+          requires:
+            - "lint"
+            - "build"
